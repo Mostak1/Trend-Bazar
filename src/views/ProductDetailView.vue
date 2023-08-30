@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="my-3 text-center fs-3">All Products</div>
+    <div class="my-3 text-center fs-3" data-aos="flip-left">All Products</div>
 
     <!-- For Pagination -->
 
@@ -28,7 +28,7 @@
     <div class="row row-cols-1 mb-3 row-cols-md-3 g-4">
       <div class="col " v-for="item in paginatedItems" :key="item.id">
         <div class="card h-100">
-          <img :src="item.thumbnail" class="card-img-top" alt="..." style="max-height: 300px;">
+          <img :src="item.thumbnail" class="card-img-top" data-aos="zoom-in" alt="..." style="max-height: 300px;">
           <div class="card-body">
             <h5 class="card-title">{{ item.title }}</h5>
             <div class="card-text">
@@ -43,6 +43,8 @@
               <p>
                 <strong>Category :</strong> {{ item.category }}
               </p>
+              <button class="btn" @click="addProductToCart(item)">Add To Cart</button>
+
             </div>
 
           </div>
@@ -70,22 +72,14 @@
         </li>
       </ul>
     </nav>
-
-    <!-- {{ items }} "title": "iPhone 9",
-      "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "discountPercentage": 12.96,
-      "rating": 4.69,
-      "stock": 94,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "...",
-      "images": ["...", "...", "..."] -->
   </div>
 </template>
 
 <script>
+
 export default {
+
+ 
   name: "Product",
   data: function () {
     return {
@@ -131,6 +125,22 @@ export default {
     },
     nextPage() {
       this.currentPage = Math.min(this.pageCount, this.currentPage + 1);
+    },
+  //  add to cart
+  addProductToCart(item) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      
+      // Check if the item is already in the cart
+      const existingItem = cart.find(cartItem => cartItem.id === item.id);
+      if (existingItem) {
+        existingItem.quantity++;
+        alert('Product quantity 1 add with the existing quantity');
+      } else {
+        cart.push({ ...item, quantity: 1 });
+        alert('Product Add Successfully');
+      }
+      
+      localStorage.setItem('cart', JSON.stringify(cart));
     },
   },
 };

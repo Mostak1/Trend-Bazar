@@ -21,6 +21,9 @@
               <li class="nav-item">
                 <RouterLink class="nav-link fs-4" to="/product">Product</RouterLink>
               </li>
+              <li class="nav-item">
+                <RouterLink class="nav-link fs-4" to="/cart">Cart</RouterLink>
+              </li>
             </ul>
           </div>
         </div>
