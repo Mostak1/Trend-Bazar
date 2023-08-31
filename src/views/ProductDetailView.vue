@@ -43,6 +43,7 @@
               <p>
                 <strong>Category :</strong> {{ item.category }}
               </p>
+              <router-link :to="'/details/' + item.id">Details</router-link>
               <button class="btn" @click="addProductToCart(item)">Add To Cart</button>
 
             </div>
