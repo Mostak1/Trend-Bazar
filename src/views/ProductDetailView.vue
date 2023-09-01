@@ -33,7 +33,8 @@
             <h5 class="card-title">{{ item.title }}</h5>
             <div class="card-text">
               <p class="d-flex justify-content-between">
-                <span class="text-decoration-line-through text-danger"><strong>Price : </strong> {{ item.price * 10 }}Tk</span>
+                <span class="text-decoration-line-through text-danger"><strong>Price : </strong> {{ item.price * 10
+                }}Tk</span>
                 <span class="text-end"><strong>Discount Price: </strong>{{ Math.round((item.price -
                   item.price * item.discountPercentage / 100) * 10) }}Tk</span>
               </p>
@@ -43,9 +44,10 @@
               <p>
                 <strong>Category :</strong> {{ item.category }}
               </p>
-              <router-link :to="'/details/' + item.id">Details</router-link>
-              <button class="btn" @click="addProductToCart(item)">Add To Cart</button>
-
+              <div class="justify-content-between d-flex">
+                <router-link :to="'/details/' + item.id" class="btn btn-outline-warning">Details</router-link>
+                <button class="btn btn-outline-danger" @click="addProductToCart(item)">Add To Cart</button>
+              </div>
             </div>
 
           </div>
@@ -80,7 +82,7 @@
 
 export default {
 
- 
+
   name: "Product",
   data: function () {
     return {
@@ -109,10 +111,11 @@ export default {
   },
   methods: {
     fetchData() {
-      fetch('https://dummyjson.com/products?limit=100')
+      fetch('http://localhost/WDPF/vuejs/project/trend-bazar-admin/public/api/productsapi')
         .then((response) => response.json())
         .then((data) => {
-          this.items = data.products;
+          this.items = data;
+          console.log(data);
         })
         .catch((error) => {
           console.error(error);
@@ -127,10 +130,10 @@ export default {
     nextPage() {
       this.currentPage = Math.min(this.pageCount, this.currentPage + 1);
     },
-  //  add to cart
-  addProductToCart(item) {
+    //  add to cart
+    addProductToCart(item) {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      
+
       // Check if the item is already in the cart
       const existingItem = cart.find(cartItem => cartItem.id === item.id);
       if (existingItem) {
@@ -140,11 +143,14 @@ export default {
         cart.push({ ...item, quantity: 1 });
         alert('Product Add Successfully');
       }
-      
+
       localStorage.setItem('cart', JSON.stringify(cart));
+      this.cartItemCount++;
+      localStorage.setItem('cartCount', this.cartItemCount.toString());
     },
   },
 };
+// 239 asynchronously 
 </script>
 
 

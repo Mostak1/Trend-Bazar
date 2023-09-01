@@ -1,5 +1,5 @@
 <template>
-  <h1>details page</h1>
+  <div class="text-center my-3 fs-2 bg-warning">{{ p.title }} Details </div>
   <!--  -->
   <div class="container">
     <div class="row">
@@ -41,38 +41,18 @@
           </div>
         </div>
 
-        <div class="product-details my-4">
-          <p class="details-title text-color mb-1">Product Details</p>
+        
+
+       
+
+        
+      </div>
+      <div class="product-details my-4">
+          <p class=" text-bold  fs-3">Product Details</p>
           <p class="description">
             {{ p.description }}
           </p>
         </div>
-
-        <div class="row questions bg-light p-3">
-          <div class="col-md-1 icon">
-            <i class="fa-brands fa-rocketchat questions-icon"></i>
-          </div>
-          <div class="col-md-11 text">
-            Have a question about our products at E-Store? Feel free to contact
-            our representatives via live chat or email.
-          </div>
-        </div>
-
-        <div class="delivery my-4">
-          <p class="font-weight-bold mb-0">
-            <span><i class="fa-solid fa-truck"></i></span>
-            <b>Delivery done in 3 days from date of purchase</b>
-          </p>
-          <p class="text-secondary">Order now to get this product delivery</p>
-        </div>
-        <div class="delivery-options my-4">
-          <p class="font-weight-bold mb-0">
-            <span><i class="fa-solid fa-filter"></i></span>
-            <b>Delivery options</b>
-          </p>
-          <p class="text-secondary">View delivery options here</p>
-        </div>
-      </div>
     </div>
   </div>
   <!--  -->
@@ -195,7 +175,7 @@ text-color {
 
 .custom-btn {
   text-transform: capitalize;
-  background-color: #0093c4;
+  background-color: #ffc107;
   color: white;
   width: 150px;
   height: 40px;
@@ -203,7 +183,7 @@ text-color {
 }
 
 .custom-btn:hover {
-  background-color: #0093c4 !important;
+  background-color: #ffc107 !important;
   font-size: 18px;
   color: white !important;
 }

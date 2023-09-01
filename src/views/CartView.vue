@@ -1,20 +1,53 @@
+
+<style scoped>
+.cart-item-image{
+  height: 100px;
+}
+</style>
 <template>
   <div class="container">
-    <h2>Your Cart</h2>
-    <div v-for="item in cartItems" :key="item.id" class="cart-item">
+    <div class="text-center fs-3 text-black my-3 bg-info">Your Cart</div>
+    <ol>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Image</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Acton</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr v-for="item in cartItems" :key="item.id" class="cart-item">
+            <th scope="row">
+              <li></li>
+            </th>
+            <td>{{ item.title }}</td>
+            <td> <img h :src="item.thumbnail" :alt="item.title" class="cart-item-image image-fluid" /></td>
+            <td> <input class="form-control" type="number" v-model="item.quantity" @change="updateQuantity(item)" /></td>
+            <td>{{ item.price * item.quantity }}Tk</td>
+            <td><button class="btn btn-danger" @click="removeFromCart(item.id)">Remove</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </ol>
+    <!-- <div v-for="item in cartItems" :key="item.id" class="cart-item">
       <div class="item-details">
         <img :src="item.thumbnail" :alt="item.title" class="cart-item-image" />
         <div class="item-info">
           <h4>{{ item.title }}</h4>
           <p>Price: {{ item.price * item.quantity }}Tk</p>
           <p>
-            Quantity: 
+            Quantity:
             <input type="number" v-model="item.quantity" @change="updateQuantity(item)" />
           </p>
         </div>
       </div>
       <button class="btn btn-danger" @click="removeFromCart(item.id)">Remove</button>
-    </div>
+    </div> -->
   </div>
 </template>
 
