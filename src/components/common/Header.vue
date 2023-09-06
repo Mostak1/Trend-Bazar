@@ -1,8 +1,22 @@
+
+<style scoped>
+
+.dark_red{
+  color: #F7444E;
+}
+.nav-link{
+color: black;
+}
+.nav-link:hover{
+  color: #F7444E;
+}
+
+</style>
 <template>
   <div class="">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container">
-        <RouterLink class="navbar-brand fs-2" to="/">TrendBazar</RouterLink>
+        <RouterLink class="navbar-brand fs-2 " to="/"><span class="dark_red">Trend</span>Bazar</RouterLink>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -22,11 +36,6 @@
               <RouterLink class="nav-link fs-4" to="/product">Product</RouterLink>
             </li>
             <li class="nav-item">
-              
-                
-              
-
-             
             </li>
           </ul>
         </div>
